@@ -29,7 +29,7 @@ x1 bin
 Define: 
 [ add(x; y; z) : x + y = z ]
 
-Syntax-Directed: 
+Syntax-Directed: (Note: maybe realted to paramatricity, but i am not sure)
 
 
 ---------------- ADD-0L
