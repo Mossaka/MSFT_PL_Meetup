@@ -1,0 +1,86 @@
+
+--------- END
+0b bin
+
+x bin
+-------- X2
+x0 bin
+
+x bin
+-------- X2+1
+x1 bin
+
+
+0b = 0
+
+0b1 = 1
+
+0b10 = 2
+
+0b100 = 4
+
+  111 <- carry
+   101
++  111
+------
+  1100
+
+
+Define: 
+[ add(x; y; z) : x + y = z ]
+
+Syntax-Directed: 
+
+
+---------------- ADD-0L
+add(0b; y; y)
+
+---------------- ADD-0R
+add(x; 0b; x)
+
+
+add(x; y; c)
+---------------- ADD-00
+add(x0; y0; c0)
+
+Check: x0 + y0 = 2 * x + 2 * y = 2 * (x + y) = 2 * c = c0
+
+add(x; y; c)
+---------------- ADD-01
+add(x0; y1; c1)
+
+add(x; y; c)
+---------------- ADD-10
+add(x1; y0; c1)
+
+add(x; y; c) add(0b1; c ; c')
+------------------------------ ADD-11 (VERSION 1)
+add(x1; y1; c')
+
+add(x; y; c) binsucc(c; c')
+------------------------------ ADD-11 (VERSION 2)
+add(x1; y1; c')
+
+Check: x1 + y1 = 2 * x + 1+ 2 * y + 1 = 2 * (x + y + 1)  = 2 * (c + 1) = c0
+
+Define
+[ binsucc(c; c') : c + 1 = c']
+
+----------------- BINSUCC0B
+binsucc(0b; 0b1) 
+
+----------------- BINSUCC0
+binsucc(x0; x1) 
+
+binsucc(x; y)
+----------------- BINSUCC01
+binsucc(x1; y0) 
+
+
+
+
+
+Prove:  Theorem: 
+	add(y; x; c)
+	--------------- ADD-COMM ????
+	add(x; y; c)
